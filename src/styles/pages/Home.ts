@@ -49,6 +49,14 @@ export const Container = styled.div`
     color: #fff;
   }
 
+  .signature {
+    width: 60%;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 600;
+  }
+
   .swiper-container {
     position: absolute;
     top: 0;

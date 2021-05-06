@@ -8,32 +8,32 @@ import useResize from '@/hooks/useResize'
 
 const items = [
   {
-    title: 'Branding and Identity',
+    title: 'Marca e Identidade',
     subTitle: 'Pixflow Studio',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-9.jpg'
   },
   {
-    title: 'Branding and Brochure',
-    subTitle: 'Tailoring Interior',
+    title: 'Branding e brochura',
+    subTitle: 'Alfaiataria Interior',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-4.jpg'
   },
   {
     title: 'Digital Media',
-    subTitle: 'Web and Photography',
+    subTitle: 'Web e fotografia',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-13.jpg'
   },
   {
-    title: 'Branding and Identity',
+    title: 'Marca e Identidade',
     subTitle: 'HardDot Stone',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-12.jpg'
   },
   {
-    title: 'Web and Photography',
+    title: 'Web e fotografia',
     subTitle: 'Violator Series',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-10.jpg'
   },
   {
-    title: 'Branding and Identity',
+    title: 'Marca e Identidade',
     subTitle: 'Banana Design',
     img: 'http://www.themezaa.com/html/pofo/images/homepage-2-slider-img-11.jpg'
   }
@@ -106,21 +106,18 @@ export default function Home(): ReactElement {
         <Swiper ref={SwiperRef} {...configs}>
           <SwiperSlide className="swiper-slide first">
             <div className="item">
-              <h4 className="text-medium-gray display-block margin-5px-bottom alt-font">
-                Hello,
-              </h4>
-              <h6 className="text-medium-gray font-weight-300 margin-20px-bottom alt-font">
-                I&apos;m Colin Smith
-              </h6>
-              <p className="text-large dispaly-block pull-left font-weight-300 width-90 margin-35px-bottom">
-                I design thoughtful digital experiences e beautiful brand
-                aesthetics. I provide high quality web design services.
+              <h4>Olá,</h4>
+              <h6>Eu sou Carlos Miguel</h6>
+              <p>
+                Eu projeto experiências digitais atenciosas e uma bela marca
+                estética. Eu forneço serviços de web design de alta qualidade.
               </p>
-              <img
+              {/* <img
                 src="http://www.themezaa.com/html/pofo/images/signature.png"
                 className="width-60 signature"
                 alt=""
-              />
+              /> */}
+              <span className="signature">Carlos Miguel</span>
             </div>
           </SwiperSlide>
 
