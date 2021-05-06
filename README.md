@@ -24,18 +24,18 @@
 </p>
 
 ---
-## 🎉 Apresentação da ideia
+## 🎉 Presentation of the idea
 
-Esse é um projeto aonde vou estar criando layouts simples, geralmente de uma pagina só, com layouts inusitados do dribble. <br />
-É um projeto aonde vamos provar que da pra fazer layouts incríveis com NextJS/ReactJS.
-Você pode contribuir tanto com código como dando dicas de layouts que pode ser feito, é só abrir uma issue 
-[aqui](https://github.com/are-if-nextjs/issues).<br />
-Você pode ver um projeto semelhante só que no ambiente React Native 
-[aqui](https://github.com/are-if).
+This is a project where I will be creating simple layouts, usually on a single page, with unusual layouts from dribble. <br />
+It is a project where we will prove that you can make amazing layouts with NextJS / ReactJS.
+You can contribute both with code and giving tips on layouts that can be done, just open an issue
+[here](https://github.com/are-if-nextjs/issues).<br />
+You can see a similar project only in the React Native environment
+[here](https://github.com/are-if).
 
 ---
 
-## 💻 Já feitos
+## 💻 Already done
 
 
 ---
