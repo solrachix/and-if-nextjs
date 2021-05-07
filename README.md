@@ -29,15 +29,15 @@
 This is a project where I will be creating simple layouts, usually on a single page, with unusual layouts from dribble. <br />
 It is a project where we will prove that you can make amazing layouts with NextJS / ReactJS.
 You can contribute both with code and giving tips on layouts that can be done, just open an issue
-[here](https://github.com/are-if-nextjs/issues).<br />
+[here](https://github.com/solrachix/are-if-nextjs/issues).<br />
 You can see a similar project only in the React Native environment
-[here](https://github.com/are-if).
+[here](https://github.com/solrachix/are-if).
 
 ---
 
 ## 💻 Already done
 
-[personal portfolio](https://are-if-nextjs.vercel.app/)
+ - [personal portfolio](https://are-if-nextjs.vercel.app/)
 ---
 
 
