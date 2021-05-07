@@ -31,7 +31,7 @@ It is a project where we will prove that you can make amazing layouts with NextJ
 You can contribute both with code and giving tips on layouts that can be done, just open an issue
 [here](https://github.com/solrachix/are-if-nextjs/issues).<br />
 You can see a similar project only in the React Native environment
-[here](https://github.com/solrachix/are-if).
+[here](https://github.com/solrachix/and-if_react-native).
 
 ---
 
