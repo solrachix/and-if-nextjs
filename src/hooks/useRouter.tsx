@@ -4,7 +4,7 @@
 import React, { useContext } from 'react'
 import { withRouter } from 'next/router'
 
-import Home from '@/pages'
+import Home from '@/pages/index.page'
 
 const Context = React.createContext<Route>({
   asPath: '/',

@@ -4,6 +4,7 @@ const withPWA = require('next-pwa')
 
 module.exports = withPlugins([
   {
+    pageExtensions: ["page.tsx", "api.ts"],
     distDir: 'build',
     future: { webpack5: true },
     typescript: {
