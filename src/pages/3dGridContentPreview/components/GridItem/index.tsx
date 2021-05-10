@@ -1,3 +1,4 @@
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 import { Container } from './styles'
 
 interface GridItemProps {
@@ -11,9 +12,18 @@ interface GridItemProps {
   index: number
 }
 
-function GridItem({ item, index }: GridItemProps): React.ReactElement {
+function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
+  const gridRef = useRef()
+  useImperativeHandle(ref, () => ({
+    elem: gridRef,
+    getAlert() {
+      alert('getAlert from Child')
+    }
+  }))
+
   return (
     <Container
+      ref={gridRef}
       href={`#preview-${index + 1}`}
       className={`grid__item pos-${index + 1}`}
       data-title={item.title}
@@ -26,4 +36,4 @@ function GridItem({ item, index }: GridItemProps): React.ReactElement {
   )
 }
 
-export default GridItem
+export default forwardRef(GridItem)

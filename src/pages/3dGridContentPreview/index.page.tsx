@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react'
 
 import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/3dGridContentPreview'
-import GridItem from './components/GridItem'
 import Cursor from './components/Cursor'
+import Grid from './components/Grid'
 
 const items = [
   {
@@ -161,11 +161,7 @@ export default function Home(): ReactElement {
             </span>
           </h2>
 
-          <div className="grid">
-            {items.map((item, index) => (
-              <GridItem key={index} {...{ item, index }} />
-            ))}
-          </div>
+          <Grid items={items} />
 
           <div className="preview">
             {false &&
