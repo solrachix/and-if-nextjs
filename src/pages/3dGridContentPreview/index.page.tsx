@@ -2,6 +2,8 @@ import React, { ReactElement } from 'react'
 
 import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/3dGridContentPreview'
+import GridItem from './components/GridItem'
+import Cursor from './components/Cursor'
 
 const items = [
   {
@@ -161,74 +163,56 @@ export default function Home(): ReactElement {
 
           <div className="grid">
             {items.map((item, index) => (
-              <a
-                key={index}
-                href={`#preview-${index + 1}`}
-                className={`grid__item pos-${index + 1}`}
-                data-title={item.title}
-              >
-                <div
-                  className="grid__item-img"
-                  style={{ backgroundImage: `url("${item.thumb}")` }}
-                ></div>
-              </a>
+              <GridItem key={index} {...{ item, index }} />
             ))}
           </div>
 
           <div className="preview">
-            {items.map((item, index) => (
-              <div
-                key={`${item.title}-${index}`}
-                className="preview__item"
-                id={`preview-${index}`}
-              >
-                <button className="preview__item-back unbutton">
-                  <span>Back</span>
-                </button>
-                <div className="preview__item-imgwrap">
-                  <div
-                    className="preview__item-img"
-                    style={{ backgroundImage: `url("${item.fullImage}")` }}
-                  ></div>
-                </div>
-                <h2 data-splitting className="preview__item-title">
-                  {item.title}
-                </h2>
-                <div className="preview__item-content">
-                  <div className="preview__item-meta">
-                    <span>{item.address}</span>
-                    <span>{item.date}</span>
-                  </div>
-                  <p className="preview__item-description">
-                    Had a barney with the inlaws a bit miffed pigeons in
-                    Trafalgar Square nigh on&apos;t goggle box chav hard cheese
-                    old boy, marvelous Moriarty pulled a right corker squiffy
-                    fork out, a tad stupendous chaps doing my head in ee bah
-                    gum.
-                  </p>
-                  <button className="preview__item-info unbutton">
-                    + Info
+            {false &&
+              items.map((item, index) => (
+                <div
+                  key={`${item.title}-${index}`}
+                  className="preview__item"
+                  id={`preview-${index}`}
+                >
+                  <button className="preview__item-back unbutton">
+                    <span>Back</span>
                   </button>
-                  <button className="preview__item-button">Buy Tickets</button>
+                  <div className="preview__item-imgwrap">
+                    <div
+                      className="preview__item-img"
+                      style={{ backgroundImage: `url("${item.fullImage}")` }}
+                    ></div>
+                  </div>
+                  <h2 data-splitting className="preview__item-title">
+                    {item.title}
+                  </h2>
+                  <div className="preview__item-content">
+                    <div className="preview__item-meta">
+                      <span>{item.address}</span>
+                      <span>{item.date}</span>
+                    </div>
+                    <p className="preview__item-description">
+                      Had a barney with the inlaws a bit miffed pigeons in
+                      Trafalgar Square nigh on&apos;t goggle box chav hard
+                      cheese old boy, marvelous Moriarty pulled a right corker
+                      squiffy fork out, a tad stupendous chaps doing my head in
+                      ee bah gum.
+                    </p>
+                    <button className="preview__item-info unbutton">
+                      + Info
+                    </button>
+                    <button className="preview__item-button">
+                      Buy Tickets
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </main>
 
-      <div className="cursor">
-        <svg className="cursor__svg" width="80" height="80" viewBox="0 0 80 80">
-          <circle
-            vectorEffect="non-scaling-stroke"
-            className="cursor__svg-circle"
-            cx="40"
-            cy="40"
-            r="20"
-          />
-        </svg>
-        <span className="cursor__text"></span>
-      </div>
+      <Cursor />
     </Container>
   )
 }
