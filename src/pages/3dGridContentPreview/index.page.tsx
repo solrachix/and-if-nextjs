@@ -1,5 +1,7 @@
 import React, { ReactElement } from 'react'
 
+import Link from 'next/link'
+
 import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/3dGridContentPreview'
 import Cursor from './components/Cursor'
@@ -128,22 +130,10 @@ export default function Home(): ReactElement {
         description={'Olá eu sou a description'}
       />
       <main>
-        <div className="message">
-          Please view this demo on a desktop to see the effect.
+        <div className="message">Por favor veja essa demo pelo Computador.
         </div>
         <div className="frame">
-          <div className="frame__title-wrap">
-            <h1 className="frame__title">
-              3D Grid Interaction with Content Preview
-            </h1>
-          </div>
-          <div className="frame__links">
-            <a href="https://tympanus.net/Development/3DGridContentPreview/">
-              Previous demo
-            </a>
-            <a href="https://tympanus.net/codrops/?p=54253">Article</a>
-            <a href="https://github.com/codrops/3DGridContentPreview">GitHub</a>
-          </div>
+          <a href="https://github.com/codrops/3DGridContentPreview">GitHub</a>
         </div>
         <div className="content">
           <h2 className="content__title">
@@ -151,60 +141,17 @@ export default function Home(): ReactElement {
               className="content__title-line content__title-line--1"
               data-splitting
             >
-              July/
+              Maio/
             </span>
             <span
               className="content__title-line content__title-line--2"
-              data-splitting
+           
             >
-              August
+              Junho
             </span>
           </h2>
 
           <Grid items={items} />
-
-          <div className="preview">
-            {false &&
-              items.map((item, index) => (
-                <div
-                  key={`${item.title}-${index}`}
-                  className="preview__item"
-                  id={`preview-${index}`}
-                >
-                  <button className="preview__item-back unbutton">
-                    <span>Back</span>
-                  </button>
-                  <div className="preview__item-imgwrap">
-                    <div
-                      className="preview__item-img"
-                      style={{ backgroundImage: `url("${item.fullImage}")` }}
-                    ></div>
-                  </div>
-                  <h2 data-splitting className="preview__item-title">
-                    {item.title}
-                  </h2>
-                  <div className="preview__item-content">
-                    <div className="preview__item-meta">
-                      <span>{item.address}</span>
-                      <span>{item.date}</span>
-                    </div>
-                    <p className="preview__item-description">
-                      Had a barney with the inlaws a bit miffed pigeons in
-                      Trafalgar Square nigh on&apos;t goggle box chav hard
-                      cheese old boy, marvelous Moriarty pulled a right corker
-                      squiffy fork out, a tad stupendous chaps doing my head in
-                      ee bah gum.
-                    </p>
-                    <button className="preview__item-info unbutton">
-                      + Info
-                    </button>
-                    <button className="preview__item-button">
-                      Buy Tickets
-                    </button>
-                  </div>
-                </div>
-              ))}
-          </div>
         </div>
       </main>
 
