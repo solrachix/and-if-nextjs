@@ -145,7 +145,7 @@ export default function Home(): ReactElement {
             </span>
             <span
               className="content__title-line content__title-line--2"
-           
+              data-splitting
             >
               Junho
             </span>

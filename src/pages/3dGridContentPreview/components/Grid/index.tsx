@@ -6,7 +6,7 @@ import { map, lerp, getMousePos, calcWinsize, getRandomNumber } from '../../util
 
 import GridItem from '../GridItem'
 import { Container } from './styles'
-import Preview from '../Preview'
+import Preview, { PreviewContainer } from '../Preview'
 
 interface Items {
   title: string
@@ -184,7 +184,7 @@ function Grid({ items }: GridProps): React.ReactElement {
         stagger: 0.03
       }, 'start+=0.1')
       .add(() => {
-        preview.DOM.elem.current.classList.add('preview__item--open');
+        preview.DOM.elem.current.classList.add('open');
       }, 'start+=0.1')
 
     // // Content/preview animation
@@ -238,7 +238,7 @@ function Grid({ items }: GridProps): React.ReactElement {
     gsap
     .timeline({
         onComplete: () => {
-            preview.DOM.elem.current.classList.remove('preview__item--open');
+            preview.DOM.elem.current.classList.remove('open');
             // pointer events
             gridRef.current.classList.remove('grid--inactive');
         }
@@ -309,7 +309,7 @@ function Grid({ items }: GridProps): React.ReactElement {
             return <GridItem key={index} ref={itemRef} {...{ item, index }} />
           })}
       </Container>
-      <div className="preview">
+      <PreviewContainer className="preview">
         {
           items.map((item, index) => {
             const previewRef = previewsRefs[index]
@@ -319,7 +319,7 @@ function Grid({ items }: GridProps): React.ReactElement {
             )
           }
         )}
-      </div>
+      </PreviewContainer>
     </>
   )
 }

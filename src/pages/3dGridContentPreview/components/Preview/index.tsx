@@ -2,7 +2,7 @@ import { forwardRef, ReactNode, useEffect, useImperativeHandle, useRef } from 'r
 
 import {gsap} from 'gsap';
 
-import { Container } from './styles';
+import { Container, PreviewContainer } from './styles';
 
 interface PreviewProps {
   item: {
@@ -97,3 +97,4 @@ function Preview({ item , index}: PreviewProps, ref) {
 };
 
 export default forwardRef(Preview);
+export { PreviewContainer }
