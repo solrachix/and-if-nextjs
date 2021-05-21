@@ -16,7 +16,7 @@ const renderedStyles = {
 
 function Cursor(_, ref): React.ReactElement {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const svgRef = useRef<SVGElement>(null)
+  const svgRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLSpanElement>(null)
 
   const [bounds, setBounds] = useState<DOMRect>(null)
@@ -57,12 +57,10 @@ function Cursor(_, ref): React.ReactElement {
 
   function enter(text: string) {
     textRef.current.innerText = text
-
     renderedStyles.scale.current = 1.5
   }
   function leave() {
     textRef.current.innerText = ''
-
     renderedStyles.scale.current = 1
   }
 
@@ -104,21 +102,9 @@ function Cursor(_, ref): React.ReactElement {
         opacity: 0
       }}
     >
-      <svg
-        ref={svgRef}
-        className="cursor__svg"
-        width="80"
-        height="80"
-        viewBox="0 0 80 80"
-      >
-        <circle
-          vectorEffect="non-scaling-stroke"
-          className="cursor__svg-circle"
-          cx="40"
-          cy="40"
-          r="20"
-        />
-      </svg>
+      <div ref={svgRef} className="cursor__svg">
+        <div className="cursor__svg-circle" />
+      </div>
       <span ref={textRef} className="cursor__text"></span>
     </Container>
   )

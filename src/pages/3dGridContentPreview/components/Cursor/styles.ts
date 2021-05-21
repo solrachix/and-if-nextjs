@@ -23,12 +23,24 @@ export const Container = styled.div`
       position: absolute;
       top: 0;
       left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 60px;
+      height: 60px;
     }
 
     .cursor__svg-circle {
-      fill: var(--cursor-fill);
-      stroke: var(--cursor-stroke);
-      stroke-width: var(--cursor-stroke-width);
+      background: var(--cursor-fill);
+      border-style: solid;
+      border-color: var(--cursor-stroke);
+      border-width: var(--cursor-stroke-width);
+      border-radius: 50%;
+
+      width: 40px;
+      height: 40px;
     }
 
     .cursor__text {
