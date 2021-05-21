@@ -48,9 +48,6 @@ function Preview({ item , index}: PreviewProps, ref) {
       image: imgWrapRef.current.querySelector('.preview__item-img'),
       // title
       title: titleRef.current,
-      // Splitting will run on the title element
-      // get the chars
-      titleChars: [...titleRef.current.querySelectorAll('.char')],
       // content
       content: previewRef.current.querySelector('.preview__item-content'),
     }
@@ -61,7 +58,7 @@ function Preview({ item , index}: PreviewProps, ref) {
       className="preview__item"
       id={`preview-${index}`}
     >
-    <button className="preview__item-back unbutton">
+      <button className="preview__item-back unbutton">
       <span>Back</span>
     </button>
       <div ref={imgWrapRef} className="preview__item-imgwrap" >

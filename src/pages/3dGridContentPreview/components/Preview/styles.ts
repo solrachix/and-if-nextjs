@@ -17,6 +17,7 @@ export const Container = styled.div`
     perspective: 1000px;
   }
 
+  perspective: 1000px;
   position: absolute;
   overflow: hidden;
   height: 0;
@@ -32,10 +33,10 @@ export const Container = styled.div`
     grid-template-areas:
       'preview-back preview-back'
       'preview-img preview-title'
-      'preview-content preview-content';
+      '... preview-content';
 
-  perspective: 1000px;
-  
+    perspective: 1000px;
+    opacity: 1;
 
     pointer-events: auto;
   }
@@ -57,6 +58,7 @@ export const Container = styled.div`
     
     margin: 0;
     padding-left: 1rem;
+    opacity: 0;
 
     grid-area: preview-title;
     grid-column-start: 1;

@@ -39,7 +39,6 @@ interface PreviewItem {
       imgWrap: HTMLDivElement,
       image: HTMLImageElement,
       title: HTMLTitleElement,
-      titleChars: HTMLTitleElement[],
       content: HTMLDivElement,
   }
 }
@@ -63,8 +62,6 @@ function Grid({ items }: GridProps): React.ReactElement {
     return prewviewRef
   })
 )
-
-  // const [isContentOpen, setIsContentOpen] = useState(false)
 
   useEffect(() => {
     if (itemsRefs) {
@@ -184,43 +181,44 @@ function Grid({ items }: GridProps): React.ReactElement {
         stagger: 0.03
       }, 'start+=0.1')
       .add(() => {
+        console.log( preview.DOM.elem.current)
         preview.DOM.elem.current.classList.add('open');
       }, 'start+=0.1')
 
-    // // Content/preview animation
-    .to(preview.DOM.titleChars, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        opacity: 1,
-        y: '0%',
-        stagger: 0.05
-    }, 'start+=0.6')
-    .to([preview.DOM.imgWrap, preview.DOM.image], {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        opacity: 1,
-        y: '0%',
-        rotationX: 0
-    }, 'start+=0.5')
-    .to(preview.DOM.imgWrap, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        opacity: 1
-    }, 'start+=0.5')
-    .to(preview.DOM.backCtrl, {
-        duration: 1.5,
-        ease: 'expo',
-        startAt: {x: '20%'},
-        x: '0%',
-        opacity: 1
-    }, 'start+=1.5')
-    .to(preview.DOM.content, {
-        duration: 1.5,
-        ease: 'expo',
-        startAt: {y: '20%'},
-        y: '0%',
-        opacity: 1
-    }, 'start+=1.5');
+      // // Content/preview animation
+      .to(preview.DOM.title, {
+          duration: 1.5,
+          ease: 'expo.inOut',
+          opacity: 1,
+          y: '0%',
+          stagger: 0.05
+      }, 'start+=0.6')
+      .to([preview.DOM.imgWrap, preview.DOM.image], {
+          duration: 1.5,
+          ease: 'expo.inOut',
+          opacity: 1,
+          y: '0%',
+          rotationX: 0
+      }, 'start+=0.5')
+      .to(preview.DOM.imgWrap, {
+          duration: 1.5,
+          ease: 'expo.inOut',
+          opacity: 1
+      }, 'start+=0.5')
+      .to(preview.DOM.backCtrl, {
+          duration: 1.5,
+          ease: 'expo',
+          startAt: {x: '20%'},
+          x: '0%',
+          opacity: 1
+      }, 'start+=1.5')
+      .to(preview.DOM.content, {
+          duration: 1.5,
+          ease: 'expo',
+          startAt: {y: '20%'},
+          y: '0%',
+          opacity: 1
+      }, 'start+=1.5');
 }
 
   function hideContent(item) {
@@ -245,7 +243,7 @@ function Grid({ items }: GridProps): React.ReactElement {
     })
     .addLabel('start', 0)
     // Content/preview animation
-    .to(preview.DOM.titleChars, {
+    .to(preview.DOM.title, {
         duration: 1.5,
         ease: 'expo.inOut',
         opacity: 0,
@@ -294,9 +292,10 @@ function Grid({ items }: GridProps): React.ReactElement {
         duration: 1,
         ease: 'expo',
         opacity: 1,
-        startAt: {scale: 0.2},
+        startAt: {scale: 0.2, y: '-100%'},
         scale: 1,
-        stagger: {amount: 0.2, grid: 'auto', from: 'center'}
+        y: '0%',
+        stagger: {amount: 0.2, grid: 'auto', from: 'start'}
     }, 'start+=1')
   }
 

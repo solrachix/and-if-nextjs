@@ -42,13 +42,13 @@ let translationVals = {x: 0, y: 0};
 let rotationVals = {x: 0, y: 0};
         
 function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
-  const gridRef = useRef<HTMLDivElement>(null) 
+  const gridRef = useRef<HTMLAnchorElement>(null) 
   
   const [winsize, setWinsize] = useState<{
     width: number
     height: number
   }>()
-  const [mousepos, setMousepos] = useState<{
+  const [mousePos, setMousePos] = useState<{
     x: number
     y: number
   }>()
@@ -72,7 +72,7 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
   useEffect(() => {
     setWinsize(calcWinsize())
     window.addEventListener('resize', () => setWinsize(calcWinsize()))
-    window.addEventListener('mousemove', ev => setMousepos(getMousePos(ev)))
+    window.addEventListener('mousemove', ev => setMousePos(getMousePos(ev)))
   }, [])
 
   useEffect(() => {
@@ -91,19 +91,19 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
 
 
   useEffect(() => {
-    if (mousepos && winsize) {
+    if (mousePos && winsize) {
       loopTransformAnimation()
     }
-  }, [mousepos, winsize])
+  }, [mousePos, winsize])
 
   // useEffect(() => {
   //   if (requestId) {
   //     window.cancelAnimationFrame(requestId);
   //     setRequestId(undefined)
-  //   } else if (mousepos && winsize) {
+  //   } else if (mousePos && winsize) {
   //     setRequestId(requestAnimationFrame(() => move()))
   //   }
-  // }, [requestId, mousepos, winsize])
+  // }, [requestId, mousePos, winsize])
 
 
   useImperativeHandle(ref, () => ({
@@ -231,11 +231,11 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
     // Calculate the amount to move.
     // Using linear interpolation to smooth things out. 
     // Translation values will be in the range of [-start, start] for a cursor movement from 0 to the window's width/height
-    translationVals.x = lerp(translationVals.x, map(mousepos.x, 0, winsize.width, - configs.xstart, configs.xstart), 0.04);
-    translationVals.y = lerp(translationVals.y, map(mousepos.y, 0, winsize.height, - configs.ystart, configs.ystart), 0.04);
+    translationVals.x = lerp(translationVals.x, map(mousePos.x, 0, winsize.width, - configs.xstart, configs.xstart), 0.04);
+    translationVals.y = lerp(translationVals.y, map(mousePos.y, 0, winsize.height, - configs.ystart, configs.ystart), 0.04);
     // same for the rotations
-    rotationVals.x = isTop ? lerp(rotationVals.x, map(mousepos.y, 0, winsize.height/2, configs.rxstart, 0), 0.04) : lerp(rotationVals.x, map(mousepos.y, winsize.height/2, winsize.height, 0, - configs.rxstart), 0.04);
-    rotationVals.y = isLeft ? lerp(rotationVals.y, map(mousepos.x, 0, winsize.width/2, - configs.rystart, 0), 0.04) : lerp(rotationVals.y, map(mousepos.x, winsize.width/2, winsize.width, 0, configs.rystart), 0.04);
+    rotationVals.x = isTop ? lerp(rotationVals.x, map(mousePos.y, 0, winsize.height/2, configs.rxstart, 0), 0.04) : lerp(rotationVals.x, map(mousePos.y, winsize.height/2, winsize.height, 0, - configs.rxstart), 0.04);
+    rotationVals.y = isLeft ? lerp(rotationVals.y, map(mousePos.x, 0, winsize.width/2, - configs.rystart, 0), 0.04) : lerp(rotationVals.y, map(mousePos.x, winsize.width/2, winsize.width, 0, configs.rystart), 0.04);
 
     gsap.set(gridRef.current, {
         x: - translationVals.x, 
