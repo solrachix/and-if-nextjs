@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { Container } from './styles'
 
 import { gsap } from 'gsap'
@@ -14,7 +14,7 @@ const renderedStyles = {
   scale: { previous: 1, current: 1, amt: 0.15 }
 }
 
-function Cursor(): React.ReactElement {
+function Cursor(_, ref): React.ReactElement {
   const cursorRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGElement>(null)
   const textRef = useRef<HTMLSpanElement>(null)
@@ -33,6 +33,15 @@ function Cursor(): React.ReactElement {
     }
   }, [bounds])
 
+  useImperativeHandle(ref, () => ({
+    DOM: {
+      elem: cursorRef
+    },
+    enter,
+    leave
+  }))
+
+
   function onMouseMoveEv() {
     const cursor = cursorRef.current
 
@@ -46,10 +55,14 @@ function Cursor(): React.ReactElement {
     window.removeEventListener('mousemove', onMouseMoveEv)
   }
 
-  function enter() {
+  function enter(text: string) {
+    textRef.current.innerText = text
+
     renderedStyles.scale.current = 1.5
   }
   function leave() {
+    textRef.current.innerText = ''
+
     renderedStyles.scale.current = 1
   }
 
@@ -111,4 +124,4 @@ function Cursor(): React.ReactElement {
   )
 }
 
-export default Cursor
+export default forwardRef(Cursor)

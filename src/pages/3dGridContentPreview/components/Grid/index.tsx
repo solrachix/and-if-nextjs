@@ -2,7 +2,9 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 
 import { gsap } from 'gsap'
 
-import { map, lerp, getMousePos, calcWinsize, getRandomNumber } from '../../utils'
+import { getRandomNumber } from '../../utils'
+
+import { useGlobal } from '../../contexts'
 
 import GridItem from '../GridItem'
 import { Container } from './styles'
@@ -46,6 +48,7 @@ interface PreviewItem {
 let isContentOpen = false
 
 function Grid({ items }: GridProps): React.ReactElement {
+  const { mouseEnterItem, mouseLeaveItem } = useGlobal()
   const gridRef = useRef<HTMLDivElement>(null)
 
   const [itemsRefs, setItemsRefs] = useState<MutableRefObject<GridItem>[]>(() =>
@@ -111,10 +114,13 @@ function Grid({ items }: GridProps): React.ReactElement {
     for (const [index, item] of items.entries()) {
       item.DOM.image.addEventListener('mouseenter', () => {
           item.onMouseEnter();
+          mouseEnterItem(item.title)
+          
           // emit('mouseEnterItem', item.title);
       });
       item.DOM.image.addEventListener('mouseleave', () => {
           item.onMouseLeave();
+          mouseLeaveItem()
           // emit('mouseLeaveItem');
       });
       item.DOM.elem.addEventListener('click', ev => {

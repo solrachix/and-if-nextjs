@@ -6,6 +6,7 @@ import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/3dGridContentPreview'
 import Cursor from './components/Cursor'
 import Grid from './components/Grid'
+import { GlobalProvider } from './contexts'
 
 const items = [
   {
@@ -124,38 +125,38 @@ const items = [
 
 export default function Home(): ReactElement {
   return (
-    <Container>
-      <SEO
-        title="3D Grid Content Preview"
-        description={'Olá eu sou a description'}
-      />
-      <main>
-        <div className="message">Por favor veja essa demo pelo Computador.
-        </div>
-        <div className="frame">
-          <a href="https://github.com/codrops/3DGridContentPreview">GitHub</a>
-        </div>
-        <div className="content">
-          <h2 className="content__title">
-            <span
-              className="content__title-line content__title-line--1"
-              data-splitting
-            >
-              Maio/
-            </span>
-            <span
-              className="content__title-line content__title-line--2"
-              data-splitting
-            >
-              Junho
-            </span>
-          </h2>
+    <GlobalProvider>
+      <Container>
+        <SEO
+          title="3D Grid Content Preview"
+          description={'Olá eu sou a description'}
+        />
+        <main>
+          <div className="message">Por favor veja essa demo pelo Computador.</div>
+          
+          <div className="frame">
+            <a href="https://github.com/codrops/3DGridContentPreview">GitHub</a>
+          </div>
+          <div className="content">
+            <h2 className="content__title">
+              <span
+                className="content__title-line content__title-line--1"
+                data-splitting
+              >
+                Maio/
+              </span>
+              <span
+                className="content__title-line content__title-line--2"
+                data-splitting
+              >
+                Junho
+              </span>
+            </h2>
 
-          <Grid items={items} />
-        </div>
-      </main>
-
-      <Cursor />
-    </Container>
+            <Grid items={items} />
+          </div>
+        </main>
+      </Container>
+    </GlobalProvider>
   )
 }
