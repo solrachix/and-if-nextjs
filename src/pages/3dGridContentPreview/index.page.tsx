@@ -1,10 +1,7 @@
 import React, { ReactElement } from 'react'
 
-import Link from 'next/link'
-
 import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/3dGridContentPreview'
-import Cursor from './components/Cursor'
 import Grid from './components/Grid'
 import { GlobalProvider } from './contexts'
 
@@ -132,8 +129,10 @@ export default function Home(): ReactElement {
           description={'Olá eu sou a description'}
         />
         <main>
-          <div className="message">Por favor veja essa demo pelo Computador.</div>
-          
+          <div className="message">
+            Por favor veja essa demo pelo Computador.
+          </div>
+
           <div className="frame">
             <a href="https://github.com/codrops/3DGridContentPreview">GitHub</a>
           </div>
@@ -152,7 +151,6 @@ export default function Home(): ReactElement {
                 Junho
               </span>
             </h2>
-
             <Grid items={items} />
           </div>
         </main>

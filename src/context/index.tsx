@@ -11,9 +11,7 @@ const AppProvider: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={DarkTheme}>
       <GlobalStyle />
-      <RouterContextProvider>
-        {children}
-      </RouterContextProvider>
+      <RouterContextProvider>{children}</RouterContextProvider>
     </ThemeProvider>
   )
 }

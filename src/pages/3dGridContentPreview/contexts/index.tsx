@@ -11,20 +11,20 @@ import Cursor from '../components/Cursor'
 interface Cursor {
   DOM: {
     elem: MutableRefObject<HTMLDivElement>
-  },
-  enter(text: string): void,
+  }
+  enter(text: string): void
   leave(): void
 }
 interface GlobalContextData {
-  mouseEnterItem(text: string): void,
-  mouseLeaveItem(): void,
+  mouseEnterItem(text: string): void
+  mouseLeaveItem(): void
 }
 
 const GlobalContext = createContext<GlobalContextData>({} as GlobalContextData)
 
 export const GlobalProvider: React.FC = ({ children }) => {
   const cursorRef = useRef<Cursor>(null)
-  
+
   const mouseEnterItem = (text: string) => {
     cursorRef.current.enter(text)
   }

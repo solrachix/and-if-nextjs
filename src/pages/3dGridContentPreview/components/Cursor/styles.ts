@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   --cursor-stroke: #e3154d;
@@ -51,8 +51,8 @@ export const Container = styled.div`
       font-size: 0.857rem;
       text-transform: uppercase;
       font-weight: 500;
-      
+
       color: var(--cursor-text);
     }
   }
-`;
+`

@@ -34,16 +34,16 @@ interface TimelineHover {
   in: false | gsap.core.Timeline
 }
 
-let hoverTimeout: NodeJS.Timeout 
+let hoverTimeout: NodeJS.Timeout
 
-let requestId = undefined
+let requestId
 
-let translationVals = {x: 0, y: 0};
-let rotationVals = {x: 0, y: 0};
-        
+const translationVals = { x: 0, y: 0 }
+const rotationVals = { x: 0, y: 0 }
+
 function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
-  const gridRef = useRef<HTMLAnchorElement>(null) 
-  
+  const gridRef = useRef<HTMLAnchorElement>(null)
+
   const [winsize, setWinsize] = useState<{
     width: number
     height: number
@@ -58,8 +58,8 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
     tZ: 0,
     rxstart: 5,
     rystart: 10,
-    xstart: getRandomNumber(70,100),
-    ystart: getRandomNumber(40,65)
+    xstart: getRandomNumber(70, 100),
+    ystart: getRandomNumber(40, 65)
   })
   const [isLeft, setIsLeft] = useState(false)
   const [isTop, setIsTop] = useState(false)
@@ -88,8 +88,6 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
       z: configs.tZ
     })
   }, [configs])
-
-
   useEffect(() => {
     if (mousePos && winsize) {
       loopTransformAnimation()
@@ -104,57 +102,57 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
   //     setRequestId(requestAnimationFrame(() => move()))
   //   }
   // }, [requestId, mousePos, winsize])
-
-
   useImperativeHandle(ref, () => ({
     title: item.title,
     index,
     DOM: {
       elem: gridRef,
-      image: gridRef?.current?.querySelector('.grid__item-img'),
+      image: gridRef?.current?.querySelector('.grid__item-img')
     },
     onMouseEnter() {
       hoverTimeout = setTimeout(() => {
-      //this.stopTransformAnimation();
+        // this.stopTransformAnimation();
 
-      if(timelineHover.out) timelineHover.out.kill();
-      
-      const image = gridRef.current.querySelector('.grid__item-img')
+        if (timelineHover.out) timelineHover.out.kill()
 
-      setTimelineHover({
-        ...timelineHover, 
-        in: gsap.timeline().addLabel('start', 0)
-          .to(image, {
+        const image = gridRef.current.querySelector('.grid__item-img')
+
+        setTimelineHover({
+          ...timelineHover,
+          in: gsap.timeline().addLabel('start', 0).to(
+            image,
+            {
               duration: 0.8,
               ease: 'expo',
               scale: 1.1
-          }, 'start')
-      })      
-    }, 10)
+            },
+            'start'
+          )
+        })
+      }, 10)
     },
     onMouseLeave() {
-      //this.loopTransformAnimation();
+      // this.loopTransformAnimation();
 
       if (hoverTimeout) {
-        clearTimeout(hoverTimeout);
+        clearTimeout(hoverTimeout)
       }
-      
-      if(timelineHover.in) timelineHover.in.kill();
+
+      if (timelineHover.in) timelineHover.in.kill()
 
       const image = gridRef.current.querySelector('.grid__item-img')
 
       setTimelineHover({
         ...timelineHover,
-        out: gsap.timeline()
-          .to(image, {
-              duration: 1,
-              ease: 'power4',
-              x: 0,
-              y: 0,
-              scale: 1
-          })
+        out: gsap.timeline().to(image, {
+          duration: 1,
+          ease: 'power4',
+          x: 0,
+          y: 0,
+          scale: 1
+        })
       })
-    }, 
+    },
     loopTransformAnimation,
     stopTransformAnimation
   }))
@@ -171,81 +169,113 @@ function GridItem({ item, index }: GridItemProps, ref): React.ReactElement {
     setConfigs({
       ...configs,
       rY: isLeft
-      ? map(
-        rect.left + rect.width / 2,
-        0,
-        winsize.width / 2,
-        configs.rystart,
-        0
-      )
-      : map(
-          rect.left + rect.width / 2,
-        winsize.width / 2,
-        winsize.width,
-        0,
-          -configs.rystart
-        ),
+        ? map(
+            rect.left + rect.width / 2,
+            0,
+            winsize.width / 2,
+            configs.rystart,
+            0
+          )
+        : map(
+            rect.left + rect.width / 2,
+            winsize.width / 2,
+            winsize.width,
+            0,
+            -configs.rystart
+          ),
       rX: isTop
         ? map(
-          rect.top + rect.height / 2,
-          0,
-          winsize.height / 2,
-          -configs.rxstart,
-          0
-        )
+            rect.top + rect.height / 2,
+            0,
+            winsize.height / 2,
+            -configs.rxstart,
+            0
+          )
         : map(
-          rect.top + rect.height / 2,
-          winsize.height / 2,
-          winsize.height,
-          0,
-          configs.rxstart
-        ),
+            rect.top + rect.height / 2,
+            winsize.height / 2,
+            winsize.height,
+            0,
+            configs.rxstart
+          ),
       tZ: isLeft
         ? map(rect.left + rect.width / 2, 0, winsize.width / 2, -200, -600)
         : map(
-          rect.left + rect.width / 2,
-          winsize.width / 2,
-          winsize.width,
-          -600,
-          -200
-        )
+            rect.left + rect.width / 2,
+            winsize.width / 2,
+            winsize.width,
+            -600,
+            -200
+          )
     })
   }
-
-
   function loopTransformAnimation() {
-    if ( !requestId ) {
-      requestId = requestAnimationFrame(() => move());
+    if (!requestId) {
+      requestId = requestAnimationFrame(() => move())
     }
   }
   // stop the render loop animation (rAF)
   function stopTransformAnimation() {
-      if ( requestId ) {
-        window.cancelAnimationFrame(requestId);
-        requestId = undefined;
-      }
+    if (requestId) {
+      window.cancelAnimationFrame(requestId)
+      requestId = undefined
+    }
   }
 
   function move() {
-    requestId = undefined;
+    requestId = undefined
     // Calculate the amount to move.
-    // Using linear interpolation to smooth things out. 
+    // Using linear interpolation to smooth things out.
     // Translation values will be in the range of [-start, start] for a cursor movement from 0 to the window's width/height
-    translationVals.x = lerp(translationVals.x, map(mousePos.x, 0, winsize.width, - configs.xstart, configs.xstart), 0.04);
-    translationVals.y = lerp(translationVals.y, map(mousePos.y, 0, winsize.height, - configs.ystart, configs.ystart), 0.04);
+    translationVals.x = lerp(
+      translationVals.x,
+      map(mousePos.x, 0, winsize.width, -configs.xstart, configs.xstart),
+      0.04
+    )
+    translationVals.y = lerp(
+      translationVals.y,
+      map(mousePos.y, 0, winsize.height, -configs.ystart, configs.ystart),
+      0.04
+    )
     // same for the rotations
-    rotationVals.x = isTop ? lerp(rotationVals.x, map(mousePos.y, 0, winsize.height/2, configs.rxstart, 0), 0.04) : lerp(rotationVals.x, map(mousePos.y, winsize.height/2, winsize.height, 0, - configs.rxstart), 0.04);
-    rotationVals.y = isLeft ? lerp(rotationVals.y, map(mousePos.x, 0, winsize.width/2, - configs.rystart, 0), 0.04) : lerp(rotationVals.y, map(mousePos.x, winsize.width/2, winsize.width, 0, configs.rystart), 0.04);
+    rotationVals.x = isTop
+      ? lerp(
+          rotationVals.x,
+          map(mousePos.y, 0, winsize.height / 2, configs.rxstart, 0),
+          0.04
+        )
+      : lerp(
+          rotationVals.x,
+          map(
+            mousePos.y,
+            winsize.height / 2,
+            winsize.height,
+            0,
+            -configs.rxstart
+          ),
+          0.04
+        )
+    rotationVals.y = isLeft
+      ? lerp(
+          rotationVals.y,
+          map(mousePos.x, 0, winsize.width / 2, -configs.rystart, 0),
+          0.04
+        )
+      : lerp(
+          rotationVals.y,
+          map(mousePos.x, winsize.width / 2, winsize.width, 0, configs.rystart),
+          0.04
+        )
 
     gsap.set(gridRef.current, {
-        x: - translationVals.x, 
-        y: - translationVals.y,
-        rotationX: - configs.rX- rotationVals.x,
-        rotationY: - configs.rY- rotationVals.y
-    });
+      x: -translationVals.x,
+      y: -translationVals.y,
+      rotationX: -configs.rX - rotationVals.x,
+      rotationY: -configs.rY - rotationVals.y
+    })
 
     loopTransformAnimation()
-}
+  }
   return (
     <Container
       ref={gridRef}

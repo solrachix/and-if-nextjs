@@ -115,13 +115,10 @@ function Grid({ items }: GridProps): React.ReactElement {
       item.DOM.image.addEventListener('mouseenter', () => {
           item.onMouseEnter();
           mouseEnterItem(item.title)
-          
-          // emit('mouseEnterItem', item.title);
       });
       item.DOM.image.addEventListener('mouseleave', () => {
           item.onMouseLeave();
           mouseLeaveItem()
-          // emit('mouseLeaveItem');
       });
       item.DOM.elem.addEventListener('click', ev => {
           ev.preventDefault();

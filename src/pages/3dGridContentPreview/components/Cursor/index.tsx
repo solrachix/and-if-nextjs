@@ -1,4 +1,10 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from 'react'
 import { Container } from './styles'
 
 import { gsap } from 'gsap'
@@ -40,7 +46,6 @@ function Cursor(_, ref): React.ReactElement {
     enter,
     leave
   }))
-
 
   function onMouseMoveEv() {
     const cursor = cursorRef.current

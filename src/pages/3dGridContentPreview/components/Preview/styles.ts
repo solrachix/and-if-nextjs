@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const PreviewContainer = styled.div`
   width: 100%;
@@ -8,10 +8,8 @@ export const PreviewContainer = styled.div`
   left: 0;
 
   position: relative;
-  pointer-events: none;  
+  pointer-events: none;
 `
-
-
 export const Container = styled.div`
   .preview__item {
     perspective: 1000px;
@@ -49,13 +47,14 @@ export const Container = styled.div`
     font-weight: 500;
     padding-left: 90px;
     margin-bottom: 1rem;
-    background: url('/images/pages/3dGridContentPreview/arrow.svg') no-repeat 0% 50%;
+    background: url('/images/pages/3dGridContentPreview/arrow.svg') no-repeat 0%
+      50%;
   }
   .preview__item-title {
     font-family: dystopian, sans-serif;
     font-size: clamp(1.5rem, 12vw, 20vh);
     line-height: 12vw;
-    
+
     margin: 0;
     padding-left: 1rem;
     opacity: 0;
@@ -63,7 +62,7 @@ export const Container = styled.div`
     grid-area: preview-title;
     grid-column-start: 1;
     align-self: center;
-    
+
     position: relative;
     overflow: hidden;
     pointer-events: none;
@@ -131,7 +130,6 @@ export const Container = styled.div`
     background: var(--color-link);
   }
 
-  
   @media screen and (min-width: 53em) {
     height: 100%;
     width: 80vw;
@@ -146,7 +144,7 @@ export const Container = styled.div`
     .preview__item-title {
       justify-self: center;
       padding: 0;
-      line-height: 100%;  
+      line-height: 100%;
     }
 
     .preview__item-meta {
@@ -163,10 +161,9 @@ export const Container = styled.div`
       grid-row-start: 3;
       border-radius: 10px 10px 0 0;
     }
-    
+
     .preview__item-content {
       padding: 0 0 0 4rem;
     }
   }
-
-`;
+`
