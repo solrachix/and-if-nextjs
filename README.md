@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/solrachix/are-if-nextjs">
-    <img alt="Logo" src="https://github.com/solrachix/are-if-nextjs/blob/master/public/icons/logo.svg?raw=true" width="50%" />
+    <img alt="Logo" src="https://github.com/solrachix/are-if-nextjs/blob/master/public/images/solrachix-logo.svg?raw=true" width="50%" />
   </a>
 </h1>
 <p align="center">
