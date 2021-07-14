@@ -39,6 +39,7 @@ You can see a similar project only in the React Native environment
 
  - [personal portfolio](https://are-if-nextjs.vercel.app/)
  - [3d Grid Content Preview](https://are-if-nextjs.vercel.app/3dGridContentPreview)
+ - [Slider Effect](https://are-if-nextjs.vercel.app/slider-landing-page)
 ---
 
 
